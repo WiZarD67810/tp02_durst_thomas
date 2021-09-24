@@ -21,6 +21,7 @@ export class AuthentificationComponent implements OnInit {
       civility: ['', [Validators.required]],
       adresse: ['', [Validators.required, Validators.pattern(/[a-zA-Z0-9 ]{1,}/)]],
       cityCode: ['', [Validators.required, Validators.pattern(/[0-9]{5}/)]],
+      country: ['', [Validators.required, Validators.pattern(/[a-zA-Z0-9 ]{1,}/)]],
       city: ['', [Validators.required, Validators.pattern(/[a-zA-Z]{1,}/)]],
       mail: ['', [Validators.required, Validators.pattern(/[a-zA-Z\.0-9]+@+[a-z]+.+[a-z]/)]],
       phone: ['', [Validators.required, Validators.pattern(/[0-9]{10}/)]],
@@ -42,13 +43,14 @@ export class AuthentificationComponent implements OnInit {
     const civility = this.authInForm.get('civility')?.value == 1 ? "Mr" : "Mme";
     const adresse = this.authInForm.get('adresse')?.value;
     const cityCode = this.authInForm.get('cityCode')?.value;
+    const country = this.authInForm.get('country')?.value;
     const city = this.authInForm.get('city')?.value;
     const mail = this.authInForm.get('mail')?.value;
     const phone = this.authInForm.get('phone')?.value;
     const username = this.authInForm.get('username')?.value;
     const password = this.authInForm.get('password')?.value;
 
-    this.authService.signIn(lastName, forName, civility, adresse, cityCode, city, mail, phone, username, password)
+    this.authService.signIn(lastName, forName, civility, adresse, cityCode, city, country, mail, phone, username, password)
     this.route.navigate(["/Information"]);
   }
 

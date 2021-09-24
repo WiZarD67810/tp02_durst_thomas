@@ -8,17 +8,17 @@ import * as shajs from 'sha.js';
 export class AuthService {
 
   isAuth = false;
-  user: User = new User("", "", "", "", "", "", "", "", "", "");
+  user: User = new User("", "", "", "", "", "", "", "", "", "", "");
 
   constructor() { }
 
-  signIn(lastName: string, forName: string, civility: string, adresse: string, cityCode: string, city: string, mail: string, phone: string, username: string, password: string) {
-    this.user = new User(lastName, forName, adresse, cityCode, city, phone, mail, civility, username, shajs('sha256').update(password).digest('hex'));
+  signIn(lastName: string, forName: string, civility: string, adresse: string, cityCode: string, city: string, country: string, mail: string, phone: string, username: string, password: string) {
+    this.user = new User(lastName, forName, adresse, cityCode, city, country, phone, mail, civility, username, shajs('sha256').update(password).digest('hex'));
     this.isAuth = true;
   }
 
   signOut() {
-    this.user = new User("", "", "", "", "", "", "", "", "", "");
+    this.user = new User("", "", "", "", "", "", "", "", "", "", "");
     this.isAuth = false;
   }
 }
